@@ -95,6 +95,7 @@
       // Define a global variable for the URL
       const url_proyectos = ["https://github.com/AgustinMoralejo/AlgoChess-/tree/master", "https://bookbnb-g7.github.io/bookbnb-landing-page/", "https://github.com/PedidosRapidos/integration"];
       const nombre_proyectos = ["AlgoChess", "BookBnb", "PedidosRapidos"];
+      const descripcion_proyectos = ["AlgoChess", "BookBnb", "PedidosRapidos"];
 
       function showImages(value) {
         const portfolio_item_1 = document.getElementById("1");
@@ -124,6 +125,14 @@
         a_titulo_proyecto_pfi_1.href = url_proyectos.at(0);
         a_titulo_proyecto_pfi_2.href = url_proyectos.at(1);
         a_titulo_proyecto_pfi_3.href = url_proyectos.at(2);
+
+        const p_pfi_1 = portfolio_item_1.querySelector('p');
+        const p_pfi_2 = portfolio_item_2.querySelector('p');
+        const p_pfi_3 = portfolio_item_3.querySelector('p');
+
+        p_pfi_1.textContent = descripcion_proyectos.at(0);
+        p_pfi_2.textContent = descripcion_proyectos.at(1);
+        p_pfi_3.textContent = descripcion_proyectos.at(2);
 
         // Get the selected option value
         // var selectedValue = document.getElementById("image-selector").value;

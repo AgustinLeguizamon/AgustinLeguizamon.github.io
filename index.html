@@ -68,11 +68,11 @@
         <div class="col-lg-12">
           <ul class="pagination">
             <li><a href="#">&laquo;</a></li>
-            <li><a onclick="showImages(0)">1</a></li>
-            <li><a onclick="showImages(1)">2</a></li>
-            <li><a onclick="showImages(2)">3</a></li>
-            <li><a onclick="showImages(3)">4</a></li>
-            <li><a onclick="showImages(4)">5</a></li>
+            <li><a onclick="cargarProyectos(0)">1</a></li>
+            <li><a onclick="cargarProyectos(1)">2</a></li>
+            <li><a onclick="cargarProyectos(2)">3</a></li>
+            <li><a onclick="cargarProyectos(3)">4</a></li>
+            <li><a onclick="cargarProyectos(4)">5</a></li>
             <li><a href="#">&raquo;</a></li>
           </ul>
         </div>
@@ -92,15 +92,25 @@
     <!-- JavaScript -->
 
     <script>
+      // Define the Person class
+      class Proyecto {
+        constructor(titulo, descripcion, url) {
+          this.titulo = titulo;
+          this.descripcion = descripcion;
+          this.url = url;
+        }
+      }
       // Define a global variable for the URL
-      const url_proyectos = ["https://github.com/AgustinMoralejo/AlgoChess-/tree/master", "https://bookbnb-g7.github.io/bookbnb-landing-page/", "https://github.com/PedidosRapidos/integration"];
-      const nombre_proyectos = ["AlgoChess", "BookBnb", "PedidosRapidos"];
-      const descripcion_proyectos = ["AlgoChess", "BookBnb", "PedidosRapidos"];
+      const proyectos = [
+        new Proyecto("AlgoChess", "AlgoChess", "https://github.com/AgustinMoralejo/AlgoChess-/tree/master"),
+        new Proyecto("BookBnb", "BookBnb", "https://bookbnb-g7.github.io/bookbnb-landing-page"),
+        new Proyecto("PedidosRapidos", "PedidosRapidos", "https://github.com/PedidosRapidos/app/tree/main")
+      ]
 
-      function showImages(index_primer_elemento) {
+      function cargarProyectos(index_primer_elemento) {
         const portfolio_items = document.getElementsByClassName("col-md-4 portfolio-item");
 
-        if (index_primer_elemento + portfolio_items.length > url_proyectos.length) {
+        if (index_primer_elemento + portfolio_items.length > proyectos.length) {
           console.error("Indice se excede de la cantidad de proyectos");
           return
         }
@@ -108,20 +118,18 @@
         for (let i = 0; i < portfolio_items.length; i++) {
           const index_proyecto = index_primer_elemento + i;
           const anchor_pfi_1 = portfolio_items[i].querySelector('a');
-          anchor_pfi_1.href = url_proyectos.at(index_proyecto);
+          anchor_pfi_1.href = proyectos.at(index_proyecto).url;
 
-          const h3_pfi_1 = portfolio_items[i].querySelector('h3');
-          const a_titulo_proyecto_pfi_1 = h3_pfi_1.querySelector('a');
-          a_titulo_proyecto_pfi_1.textContent = nombre_proyectos.at(index_proyecto);
-          a_titulo_proyecto_pfi_1.href = url_proyectos.at(index_proyecto);
+          const a_titulo_proyecto_pfi_1 = portfolio_items[i].querySelector('h3').querySelector('a');
+          a_titulo_proyecto_pfi_1.textContent = proyectos.at(index_proyecto).titulo;
+          a_titulo_proyecto_pfi_1.href = proyectos.at(index_proyecto).url;
 
-          const p_pfi_1 = portfolio_items[i].querySelector('p');
-          p_pfi_1.textContent = descripcion_proyectos.at(index_proyecto);
+          portfolio_items[i].querySelector('p').textContent = proyectos.at(index_proyecto).descripcion;
         }
 
       }
 
-      showImages(0);
+      cargarProyectos(0);
     </script>
 
     <script src="js/jquery-1.10.2.js"></script>

@@ -83,7 +83,7 @@
       <footer>
         <div class="row">
           <div class="col-lg-12">
-            <p>Creado a partir de https://github.com/learning-zone/website-templates<span id="getCurrentDate"></span></p>
+            <p>Creado a partir de uno de los templates de https://github.com/learning-zone/website-templates</p>
           </div>
         </div>
       </footer>
@@ -92,7 +92,6 @@
     <!-- JavaScript -->
 
     <script>
-      // Define the Person class
       class Proyecto {
         constructor(titulo, descripcion, categoria, url) {
           this.titulo = titulo;
@@ -102,7 +101,6 @@
         }
       }
 
-      // Using Object
       const Categorias = {
         JAVA: 'Java',
         JAVASCRIPT: 'Javascript/React/ReactNative/HTML/CSS',
@@ -115,23 +113,30 @@
         CLOJURE: 'Clojure'
       };
 
-      // Define a global variable for the URL
+      // len 13
       const proyectos = [
-        new Proyecto("AlgoChess", "Juego de mesa por turnos con Junit y JavaFx", Categorias.JAVA, "https://github.com/AgustinMoralejo/AlgoChess-/tree/master"),
+        new Proyecto("AlgoChess", "Juego de mesa por turnos con Junit y JavaFx siguiendo el patrón de diseño modelo Model View Controller e implementando prácticas de Testing", Categorias.JAVA, "https://github.com/AgustinMoralejo/AlgoChess-/tree/master"),
         new Proyecto("BookBnb", "Aplicación Mobile de alquiler de alojamientos", Categorias.JAVASCRIPT, "https://bookbnb-g7.github.io/bookbnb-landing-page"),
-        new Proyecto("PedidosRapidos", " Aplicación Mobile para pedidos", Categorias.JAVASCRIPT, "https://github.com/PedidosRapidos/app/tree/main"),
+        new Proyecto("PedidosRapidos", " Aplicación Mobile para pedidos de comída", Categorias.JAVASCRIPT, "https://github.com/PedidosRapidos/app/tree/main"),
         new Proyecto("Figuritas Qatar 2022", "App web de Figuritas Mundial Qatar 2022", Categorias.JAVASCRIPT, "https://github.com/tdp-II-grupo-5-2022-2c/web"),
+        new Proyecto("Protocolo DBus y TCP con Cliente-Servidor", "Cliente lee y envía lineas de archivo a un servidor usando Protoclo DBus y sockets TCP", Categorias.C, "https://github.com/AgustinLeguizamon/tp1"),
         new Proyecto("Problema de Concurrencia: Memoria compartida", "Exclusión mutua con Semáforos System-V en C++", Categorias.CPP, "https://github.com/AgustinLeguizamon/tp2-via-unica"),
         new Proyecto("Problema de Concurrencia: Productores y consumidores", "Productores y consumidores usando Threads en C++", Categorias.CPP, "https://github.com/AgustinLeguizamon/tp2"),
+        new Proyecto("Problema de Concurrencia: Cliente y Servidor", "Pequeño juego de adivinar un número hosteado en un servidor que espera a conexiones de clientes (jugadores) mediante protocolo TCP", Categorias.CPP, "https://github.com/AgustinLeguizamon/tp3"),
+        new Proyecto("Variante del MMORPG Argentum Online", "Juego multiplayer desarrollado en C++ con sockets TCP y modelo Cliente-Servidor y SDL 2.0 para la interfaz gráfica", Categorias.CPP, "https://github.com/FrancoMariotti/tp-final-argentum"),
+        new Proyecto("Natural Language Processing en Competencia de Kaggle", "Algoritmos de Machine Learning y NPL para determinar cuales tweets sbore desastres naturales son falsos", Categorias.PYTHON, "https://www.kaggle.com/code/agustnleguizamn/tp2-pre-process-classifiers-stacking/notebook"),
+        new Proyecto("Simulación gráfica de peatones cruzando la calle", "Simulación de la interacción entre peatones y vehiculos en un cruce peatonal, con interfáz gráfica y modelos probabilísticos", Categorias.PYTHON, "https://github.com/AgustinLeguizamon/75.26-Simulacion-TP1"),
+        new Proyecto("Api para compra de pasajes de avión", "Compra de pasajes de Avión usando Go channels, Testing y Goroutines", Categorias.GO, "https://github.com/Jaz05/airport-application"),
+        new Proyecto("Intérprete de BASIC 64 V2", "Intérprete de BASIC 64 V2 en Clojure desarrollado con Test Driven Development", Categorias.CLOJURE, "https://github.com/AgustinLeguizamon/interprete-basic-clojure"),
       ]
 
       function cargarProyectos(index_primer_elemento) {
         const portfolio_items = document.getElementsByClassName("col-md-4 portfolio-item");
-        const inicio = index_primer_elemento * 3;
+        let inicio = index_primer_elemento * 3;
 
-        if (inicio + portfolio_items.length > proyectos.length) {
-          console.error("Indice se excede de la cantidad de proyectos");
-          return
+        const diferencia = proyectos.length - (inicio + portfolio_items.length)
+        if (diferencia < 0) {
+          inicio += diferencia;
         }
 
         const categorias = new Set();
@@ -150,7 +155,6 @@
         }
 
         document.getElementById("categoria").textContent = Array.from(categorias).reduce((acc, currentValue, currentIndex, array) => acc + "/" + currentValue)
-
       }
 
       cargarProyectos(0);
@@ -158,10 +162,6 @@
 
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script type="text/javascript">
-      const dt = new Date();
-      document.getElementById('getCurrentDate').innerHTML = dt.getFullYear();
-    </script>
   </body>
 
 </html>

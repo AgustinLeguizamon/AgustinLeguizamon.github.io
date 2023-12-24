@@ -2,6 +2,11 @@ body {
 	margin-top: 50px; /* 50px is the height of the navbar - change this if the navbarn height changes */
 }
 
+.highlight, .highlight a {
+	color: red;
+	font-weight: bold;
+}
+
 .portfolio-item {
 	margin-bottom: 25px;
 }
